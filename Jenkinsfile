@@ -4,7 +4,7 @@ node {
         checkout scm
     }
     stage('Build image') {
-        app = docker.build("aleksandarstojanov/kiii-jenkins1:${env.BRANCH_NAME}-${env.BUILD_NUMBER}")
+        app = docker.build("${env.BRANCH_NAME}-${env.BUILD_NUMBER}")
     }
     stage('Push image') {   
         docker.withRegistry('https://index.docker.io/v1/', 'my-new-dockerhub-credentials') {
